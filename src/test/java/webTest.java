@@ -11,15 +11,13 @@ public class webTest {
 
     WebDriver driver = new ChromeDriver();
 
-    @AfterMethod
+    @AfterTest
     public void setEnd() {
         driver.quit();
     }
 
-
-
     @Test
-            public void testFirst() throws InterruptedException {
+    public void testFirst() throws InterruptedException {
         String chromeDriver = "webdriver.chrome.driver";
         String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
         String url = "https://www.99-bottles-of-beer.net/";
@@ -33,7 +31,6 @@ public class webTest {
         String actualResult = driver.getCurrentUrl();
 
         Assert.assertEquals(actualResult, expectedResult);
-
     }
 
     @Test
@@ -43,7 +40,6 @@ public class webTest {
         String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
         String url = "https://www.99-bottles-of-beer.net/";
         String expectedResult = "Welcome to 99 Bottles of Beer";
-
 
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
