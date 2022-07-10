@@ -130,8 +130,6 @@ public class webTest {
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
 
-
-
         WebElement linkTeam = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/abc.html\"]"));
         linkTeam.click();
 
@@ -139,11 +137,21 @@ public class webTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    @Test
+    public void checkTabSearchLanguages() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "https://www.99-bottles-of-beer.net/search.html";
 
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
 
+        WebElement linkTeam = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/search.html\"]"));
+        linkTeam.click();
 
-
-
-
+        String actualResult = driver.getCurrentUrl();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 
 }
