@@ -69,4 +69,25 @@ public class webTest {
         System.out.println(expectedResult);
     }
 
+    @Test
+    public void checkLinkSongLyrics() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "https://www.99-bottles-of-beer.net/lyrics.html";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        WebElement linkTeam = driver.findElement(By.xpath("//a[@href=\"lyrics.html\"]"));
+        linkTeam.click();
+
+        String actualResult = driver.getCurrentUrl();
+
+        Assert.assertEquals(actualResult, expectedResult);
+
+        System.out.println(actualResult);
+        System.out.println(expectedResult);
+    }
+
 }
