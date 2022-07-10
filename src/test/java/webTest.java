@@ -47,6 +47,8 @@ public class webTest {
         WebElement actualResult = driver.findElement(By.xpath("//div[@id=\"main\"]/h2"));
 
         Assert.assertEquals(actualResult.getText(), expectedResult);
+
+        System.out.println("Test finished successfully");
     }
 
 }
