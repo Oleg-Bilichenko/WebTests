@@ -48,5 +48,4 @@ public class webTest {
 
         Assert.assertEquals(actualResult.getText(), expectedResult);
     }
-
 }
