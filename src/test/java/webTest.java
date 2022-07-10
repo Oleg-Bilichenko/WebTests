@@ -130,12 +130,20 @@ public class webTest {
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
 
+
+
         WebElement linkTeam = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/abc.html\"]"));
         linkTeam.click();
 
         String actualResult = driver.getCurrentUrl();
-
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+
+
+
+
+
+
 
 }
