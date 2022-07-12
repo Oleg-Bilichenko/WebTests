@@ -7,7 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 
-public class webTest {
+public class HomePageTest {
 
     WebDriver driver = new ChromeDriver();
 
@@ -16,22 +16,7 @@ public class webTest {
         driver.quit();
     }
 
-    @Test
-    public void testFirst() throws InterruptedException {
-        String chromeDriver = "webdriver.chrome.driver";
-        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
-        String url = "https://www.99-bottles-of-beer.net/";
-        String expectedResult = "https://www.99-bottles-of-beer.net/";
 
-        System.setProperty(chromeDriver, driverPath);
-
-        driver.get(url);
-        Thread.sleep(3000);
-
-        String actualResult = driver.getCurrentUrl();
-
-        Assert.assertEquals(actualResult, expectedResult);
-    }
 
     @Test
     public void verifyHeader() {
@@ -59,8 +44,8 @@ public class webTest {
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
 
-        WebElement linkTeam = driver.findElement(By.xpath("//a[@href=\"team.html\"]"));
-        linkTeam.click();
+        WebElement link = driver.findElement(By.xpath("//a[@href=\"team.html\"]"));
+        link.click();
 
         String actualResult = driver.getCurrentUrl();
 
@@ -77,8 +62,8 @@ public class webTest {
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
 
-        WebElement linkTeam = driver.findElement(By.xpath("//a[@href=\"lyrics.html\"]"));
-        linkTeam.click();
+        WebElement link = driver.findElement(By.xpath("//a[@href=\"lyrics.html\"]"));
+        link.click();
 
         String actualResult = driver.getCurrentUrl();
 
@@ -95,8 +80,8 @@ public class webTest {
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
 
-        WebElement linkTeam = driver.findElement(By.xpath("//a[@href=\"info.html\"]"));
-        linkTeam.click();
+        WebElement link = driver.findElement(By.xpath("//a[@href=\"info.html\"]"));
+        link.click();
 
         String actualResult = driver.getCurrentUrl();
 
@@ -113,8 +98,24 @@ public class webTest {
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
 
-        WebElement linkTeam = driver.findElement(By.xpath("//a[@href=\"impressum.html\"]"));
-        linkTeam.click();
+        WebElement link = driver.findElement(By.xpath("//a[@href=\"impressum.html\"]"));
+        link.click();
+
+        String actualResult = driver.getCurrentUrl();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+
+    @Test
+    public void testTabStart() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "https://www.99-bottles-of-beer.net/";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
 
         String actualResult = driver.getCurrentUrl();
 
@@ -131,8 +132,8 @@ public class webTest {
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
 
-        WebElement linkTeam = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/abc.html\"]"));
-        linkTeam.click();
+        WebElement link = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/abc.html\"]"));
+        link.click();
 
         String actualResult = driver.getCurrentUrl();
         Assert.assertEquals(actualResult, expectedResult);
@@ -148,8 +149,8 @@ public class webTest {
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
 
-        WebElement linkTeam = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/search.html\"]"));
-        linkTeam.click();
+        WebElement link = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/search.html\"]"));
+        link.click();
 
         String actualResult = driver.getCurrentUrl();
         Assert.assertEquals(actualResult, expectedResult);
@@ -165,8 +166,8 @@ public class webTest {
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
 
-        WebElement linkTeam = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/toplist.html\"]"));
-        linkTeam.click();
+        WebElement link = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/toplist.html\"]"));
+        link.click();
 
         String actualResult = driver.getCurrentUrl();
         Assert.assertEquals(actualResult, expectedResult);
@@ -182,8 +183,59 @@ public class webTest {
         System.setProperty(chromeDriver, driverPath);
         driver.get(url);
 
-        WebElement linkTeam = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/guestbookv2.html\"]"));
-        linkTeam.click();
+        WebElement link = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/guestbookv2.html\"]"));
+        link.click();
+
+        String actualResult = driver.getCurrentUrl();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void checkTabSubmitNewLanguage() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        WebElement link = driver.findElement(By.xpath("//ul[@id=\"menu\"]//a[@href=\"/submitnewlanguage.html\"]"));
+        link.click();
+
+        String actualResult = driver.getCurrentUrl();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testFooterStart() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "https://www.99-bottles-of-beer.net/";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        WebElement link = driver.findElement(By.xpath("//div[@id=\"footer\"]//a[@href=\"/\"]"));
+        link.click();
+
+        String actualResult = driver.getCurrentUrl();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void checkFooterBrowseLanguages() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "https://www.99-bottles-of-beer.net/abc.html";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        WebElement link = driver.findElement(By.xpath("//div[@id=\"footer\"]//a[@href=\"/abc.html\"]"));
+        link.click();
 
         String actualResult = driver.getCurrentUrl();
         Assert.assertEquals(actualResult, expectedResult);
