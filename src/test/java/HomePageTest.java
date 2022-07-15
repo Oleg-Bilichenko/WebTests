@@ -340,4 +340,21 @@ public class HomePageTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    @Test
+    public void checkLinkSubmitYourOwnPieceOfCode() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        WebElement link = driver.findElement(By.xpath("//div[@id='main']//a[@href='./submitnewlanguage.html']"));
+        link.click();
+
+        String actualResult = driver.getCurrentUrl();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
 }
