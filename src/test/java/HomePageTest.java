@@ -5,9 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
-import java.time.Duration;
-
+import java.util.concurrent.TimeUnit;
 
 public class HomePageTest {
 
@@ -16,11 +14,8 @@ public class HomePageTest {
     @BeforeTest
     public void setUp() {
 
-        WebDriverManager.chromedriver().setup();
-
         driver = new ChromeDriver();
-
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
