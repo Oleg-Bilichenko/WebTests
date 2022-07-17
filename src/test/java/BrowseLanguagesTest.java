@@ -118,4 +118,24 @@ public class BrowseLanguagesTest {
         }
     }
 
+    @Test
+    public void checkSearchByLetter_C() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/abc.html";
+        char expectedResult = 'c';
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        WebElement link = driver.findElement(By.xpath("//a[@href='c.html']"));
+        link.click();
+
+        List<WebElement> resultList = driver.findElements(By.xpath("//td/a"));
+        for (int i = 0; i < resultList.size(); i++) {
+            char actualResult = resultList.get(i).getText().toLowerCase().charAt(0);
+            Assert.assertEquals(actualResult, expectedResult);
+        }
+    }
+
 }
