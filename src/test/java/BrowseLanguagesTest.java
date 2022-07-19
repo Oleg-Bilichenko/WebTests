@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -94,7 +95,7 @@ public class BrowseLanguagesTest {
         List<WebElement> resultList = driver.findElements(By.xpath("//td/a"));
         for (int i = 0; i < resultList.size(); i++) {
             char actualResult = resultList.get(i).getText().toLowerCase().charAt(0);
-             Assert.assertEquals(actualResult, expectedResult);
+            Assert.assertEquals(actualResult, expectedResult);
         }
     }
 
@@ -249,6 +250,33 @@ public class BrowseLanguagesTest {
         driver.get(url);
 
         WebElement link = driver.findElement(By.xpath("//a[@href='i.html']"));
+        link.click();
+
+        List<WebElement> resultList = driver.findElements(By.xpath("//td/a"));
+        for (int i = 0; i < resultList.size(); i++) {
+            char actualResult = resultList.get(i).getText().toLowerCase().charAt(0);
+            Assert.assertEquals(actualResult, expectedResult);
+        }
+    }
+
+    @DataProvider(name = "LetterDataProvider")
+    public Object[][] getData() {
+        Object[][] data = {{'j'}, {'k'}, {'l'}, {'k'}, {'l'}, {'m'}, {'n'}, {'p'}, {'q'}, {'r'}, {'s'}, {'t'}, {'v'},
+                {'w'}, {'x'}, {'y'}, {'z'}};
+            return data;
+        }
+
+    @Test(dataProvider = "LetterDataProvider")
+    public void checkSearchByLetter_JKL(char letter) {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/abc.html";
+        char expectedResult = letter;
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        WebElement link = driver.findElement(By.xpath("//a[@href='" + letter + ".html']"));
         link.click();
 
         List<WebElement> resultList = driver.findElements(By.xpath("//td/a"));
