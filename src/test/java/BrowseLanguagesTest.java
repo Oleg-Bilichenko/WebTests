@@ -305,13 +305,43 @@ public class BrowseLanguagesTest {
         }
 
         for (int i = 0; i < array.length; i++) {
-            driver.findElement(By.xpath("//a[text()='" + array[i] + "']")).click();
+            driver.findElement(By.xpath("//td/a[text()='" + array[i] + "']")).click();
             String expectedResult = "Language " + array[i];
             String actualResult = driver.findElement(By.xpath("//div[@id='main']/h2")).getText();
             Assert.assertEquals(actualResult, expectedResult);
             driver.navigate().back();
         }
     }
+
+    @Test
+    public void checkByLanguageCategory_B() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/b.html";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        List<WebElement> resultListWorldsDs = driver.findElements(By.xpath("//table//a[@href]"));
+
+        String[] array = new String[resultListWorldsDs.size()];
+
+        for (int i = 0; i < resultListWorldsDs.size(); i++) {
+            String res = resultListWorldsDs.get(i).getText();
+                array[i] = res;
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            driver.findElement(By.xpath("//td/a[text()=\"" + array[i] + "\"]")).click();
+            String expectedResult = "Language " + array[i];
+            String actualResult = driver.findElement(By.xpath("//div[@id='main']/h2")).getText();
+            Assert.assertEquals(actualResult, expectedResult);
+            driver.navigate().back();
+        }
+
+    }
+
+
 
 }
 
