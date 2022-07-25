@@ -341,7 +341,50 @@ public class BrowseLanguagesTest {
 
     }
 
+    @DataProvider(name = "ListWorldsDataProvider")
+    public Object[][] getDataList() {
+        Object[][] data = {{'a'}, {'b'}, {'c'}, {'d'}, {'e'}, {'f'}, {'g'}, {'h'}, {'i'}, {'j'}, {'k'}, {'l'}, {'k'},
+                 {'l'}, {'m'}, {'n'}, {'p'}, {'q'}, {'r'}, {'s'}, {'t'}, {'v'}, {'w'}, {'x'}, {'y'}, {'z'}};
 
+        return data;
+    }
+
+    @Test(dataProvider = "ListWorldsDataProvider")
+    public void checkSearchByLetter_XYZ(char letter) {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/abc.html";
+        char expectedResult = letter;
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        WebElement link = driver.findElement(By.xpath("//a[@href='" + letter + ".html']"));
+        link.click();
+
+        List<WebElement> resultList = driver.findElements(By.xpath("//td/a"));
+        for (int i = 0; i < resultList.size(); i++) {
+            char actualResult = resultList.get(i).getText().toLowerCase().charAt(0);
+            Assert.assertEquals(actualResult, expectedResult);
+        }
+
+        List<WebElement> resultListWorldsDs = driver.findElements(By.xpath("//table//a[@href]"));
+
+        String[] array = new String[resultListWorldsDs.size()];
+
+        for (int i = 0; i < resultListWorldsDs.size(); i++) {
+            String res = resultListWorldsDs.get(i).getText();
+            array[i] = res;
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            driver.findElement(By.xpath("//td/a[text()=\"" + array[i] + "\"]")).click();
+            String expRes = "Language " + array[i];
+            String actRes = driver.findElement(By.xpath("//div[@id='main']/h2")).getText();
+            Assert.assertEquals(actRes, expRes);
+            driver.navigate().back();
+        }
+    }
 
 }
 
