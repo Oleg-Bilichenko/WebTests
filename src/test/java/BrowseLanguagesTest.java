@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -264,8 +263,8 @@ public class BrowseLanguagesTest {
     public Object[][] getData() {
         Object[][] data = {{'j'}, {'k'}, {'l'}, {'k'}, {'l'}, {'m'}, {'n'}, {'p'}, {'q'}, {'r'}, {'s'}, {'t'}, {'v'},
                 {'w'}, {'x'}, {'y'}, {'z'}};
-            return data;
-        }
+        return data;
+    }
 
     @Test(dataProvider = "LetterDataProvider")
     public void checkSearchByLetter_JKL(char letter) {
@@ -287,4 +286,35 @@ public class BrowseLanguagesTest {
         }
     }
 
+    @Test
+    public void checkByLanguageCategory_A() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/abc.html";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        List<WebElement> resultListWorldsDs = driver.findElements(By.xpath("//table//a[@href]"));
+
+        String[] array = new String[resultListWorldsDs.size()];
+
+        for (int i = 0; i < resultListWorldsDs.size(); i++) {
+            String res = resultListWorldsDs.get(i).getText();
+            array[i] = res;
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            driver.findElement(By.xpath("//a[text()='" + array[i] + "']")).click();
+            String expectedResult = "Language " + array[i];
+            String actualResult = driver.findElement(By.xpath("//div[@id='main']/h2")).getText();
+            Assert.assertEquals(actualResult, expectedResult);
+            driver.navigate().back();
+        }
+    }
+
 }
+
+
+
+
