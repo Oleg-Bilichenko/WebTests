@@ -386,14 +386,14 @@ public class BrowseLanguagesTest {
         }
     }
 
-    @DataProvider(name = "Search LanguagesDataProvider")
+    @DataProvider(name = "SearchLanguagesDataProvider")
     public Object[][] checkSearchLanguages() {
         Object[][] data = {{"ABC"}, {"BAK"}, {"Calc"}, {"Dark"}, {"Excel"}, {"False"}, {"GAP"}, {"Hope"}, {"IBM"}, {"Java"}};
 
         return data;
     }
 
-    @Test(dataProvider = "Search LanguagesDataProvider")
+    @Test(dataProvider = "SearchLanguagesDataProvider")
     public void checkSearchLanguages(String word) {
         String chromeDriver = "webdriver.chrome.driver";
         String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
@@ -411,6 +411,8 @@ public class BrowseLanguagesTest {
             Assert.assertTrue(actualResult.contains(word));
         }
     }
+
+
 
 
 }
