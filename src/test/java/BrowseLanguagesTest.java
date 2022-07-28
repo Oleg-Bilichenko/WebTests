@@ -386,6 +386,33 @@ public class BrowseLanguagesTest {
         }
     }
 
+    @DataProvider(name = "Search LanguagesDataProvider")
+    public Object[][] checkSearchLanguages() {
+        Object[][] data = {{"ABC"}, {"BAK"}, {"Calc"}, {"Dark"}, {"Excel"}, {"False"}, {"GAP"}, {"Hope"}, {"IBM"}, {"Java"}};
+
+        return data;
+    }
+
+    @Test(dataProvider = "Search LanguagesDataProvider")
+    public void checkSearchLanguages(String word) {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/search.html";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        driver.findElement(By.xpath("//form[@id='searchlanguages']//input[@name='search']")).sendKeys(word);
+        driver.findElement(By.xpath("//form[@id='searchlanguages']//input[@name='submitsearch']")).click();
+
+        List<WebElement> resultList = driver.findElements(By.xpath("//td/a"));
+        for (int i = 0; i < resultList.size(); i++) {
+            String actualResult = resultList.get(i).getText();
+            Assert.assertTrue(actualResult.contains(word));
+        }
+    }
+
+
 }
 
 
