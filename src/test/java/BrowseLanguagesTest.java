@@ -328,7 +328,7 @@ public class BrowseLanguagesTest {
 
         for (int i = 0; i < resultListWorldsDs.size(); i++) {
             String res = resultListWorldsDs.get(i).getText();
-                array[i] = res;
+            array[i] = res;
         }
 
         for (int i = 0; i < array.length; i++) {
@@ -344,7 +344,7 @@ public class BrowseLanguagesTest {
     @DataProvider(name = "ListWorldsDataProvider")
     public Object[][] getDataList() {
         Object[][] data = {{'a'}, {'b'}, {'c'}, {'d'}, {'e'}, {'f'}, {'g'}, {'h'}, {'i'}, {'j'}, {'k'}, {'l'}, {'k'},
-                 {'l'}, {'m'}, {'n'}, {'p'}, {'q'}, {'r'}, {'s'}, {'t'}, {'v'}, {'w'}, {'x'}, {'y'}, {'z'}};
+                {'l'}, {'m'}, {'n'}, {'p'}, {'q'}, {'r'}, {'s'}, {'t'}, {'v'}, {'w'}, {'x'}, {'y'}, {'z'}};
 
         return data;
     }
@@ -411,6 +411,24 @@ public class BrowseLanguagesTest {
             Assert.assertTrue(actualResult.contains(word));
         }
     }
+
+    //************************************************************************************************
+
+    @Test
+    public void checkTopRated() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/toplist.html";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        driver.findElement(By.xpath("//a[@href='./toplist.html']")).click();
+        String expectedResult = "Top Rated";
+        String actualResult = driver.findElement(By.xpath("//div[@id='main']/h2")).getText();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
 
 }
 
