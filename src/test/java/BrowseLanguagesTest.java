@@ -442,6 +442,21 @@ public class BrowseLanguagesTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    @Test
+    public void checkTopRatedEsoteric() {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Users/olegbill/Disk_D/Testing/QAForEveryone/QAForEveryone_03/#qa_java_beginners/MVN_Progekts_IrinaZ/WebTests/chromedriver";
+        String url = "https://www.99-bottles-of-beer.net/toplist.html";
+
+        System.setProperty(chromeDriver, driverPath);
+        driver.get(url);
+
+        driver.findElement(By.xpath("//a[@href='./toplist_esoteric.html']")).click();
+        String expectedResult = "Top Rated Esoteric Languages";
+        String actualResult = driver.findElement(By.xpath("//div[@id='main']/h2")).getText();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
 }
 
 
